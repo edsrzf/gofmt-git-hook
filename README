@@ -1,0 +1,13 @@
+This script is intended to be used as a git pre-commit hook. It will prevent
+you from committing if you need to run gofmt on your modified .go files.
+
+It's based on this golang-nuts discussion:
+http://groups.google.com/group/golang-nuts/browse_thread/thread/bcd1b0e3c75c3884/5ce342b06ea29d03
+
+To install it in a single repository, copy it to .git/hooks/pre-commit and make
+it executable.
+
+You might also find it useful to create a git alias for gofmt by running:
+git config alias.gofmt '!gofmt -w `git diff --name-only --cached | grep "\.go$"`'
+
+Then you can run git gofmt and format all modified .go files.
