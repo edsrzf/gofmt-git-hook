@@ -8,6 +8,6 @@ To install it in a single repository, copy it to .git/hooks/pre-commit and make
 it executable.
 
 You might also find it useful to create a git alias for gofmt by running:
-git config alias.gofmt '!gofmt -w `git diff --name-only --cached | grep "\.go$"`'
+git config alias.gofmt '!gofmt -w `git diff --name-only | grep "\.go$"`'
 
 Then you can run git gofmt and format all modified .go files.
