@@ -6,18 +6,13 @@ test_fmt() {
     do
         if test -n "$(gofmt -l "$file")"
         then
-            if test ! -n "$list"
-            then
-                list="$file"
-            else
-                list="$list\n$file"
-            fi
+            list="${list}${file}\n"
         fi
     done
     if test -n "$list"
     then
         echo "gofmt needs to format these files (run gofmt -w):"
-        echo -e $list
+        printf "$list"
         exit 1
     fi
 }
