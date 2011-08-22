@@ -4,7 +4,7 @@ test_fmt() {
     IFS=$'\n'
     for file in $(git diff --cached --name-only | grep '\.go$')
     do
-        if test -n "$(gofmt -l "$file")"
+        if test "$(git cat-file -p :$file | gofmt -l)" = "<standard input>"
         then
             list="${list}${file}\n"
         fi
