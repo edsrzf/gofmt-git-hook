@@ -1,7 +1,8 @@
 #!/bin/sh
 
 test_fmt() {
-    IFS=$'\n'
+    IFS='
+'
     for file in $(git diff --cached --name-only | grep '\.go$')
     do
         if test "$(git cat-file -p :$file | gofmt -l)" = "<standard input>"
