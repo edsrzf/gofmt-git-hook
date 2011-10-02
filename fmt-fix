@@ -1,0 +1,22 @@
+#!/bin/sh
+# NOTE: This script does not play well when adding partial changes, such as with
+# git add -p or git commit -p.
+
+test_fmt() {
+    IFS='
+'
+    for file in $(git diff --cached --name-only | grep '\.go$')
+    do
+        gofmt -w "$file"
+        git add "$file"
+    done
+}
+
+case "$1" in
+    --about )
+        echo "Check Go code formatting"
+        ;;
+    * )
+        test_fmt
+        ;;
+esac

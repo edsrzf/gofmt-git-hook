@@ -1,11 +1,19 @@
-This script is intended to be used as a git pre-commit hook. It will prevent you
-from committing if you need to run gofmt on your modified .go files.
+This project contains two scripts intended to be used as git pre-commit hooks.
 
-It's based on this golang-nuts discussion:
+The first, fmt-check, prevents you from committing if you need to run gofmt on any
+modified .go file.
+
+The second, fmt-fix, runs all modified .go files through gofmt before committing.
+NOTE: This script does not play well when adding partial changes, such as with
+`git add -p` or `git commit -p`.
+
+You should use either one or the other, not both.
+
+Both scripts are based on this golang-nuts discussion:
 http://groups.google.com/group/golang-nuts/browse_thread/thread/bcd1b0e3c75c3884/5ce342b06ea29d03
 
-To install it in a single repository, copy it to .git/hooks/pre-commit and make it
-executable.
+To install in a single repository, copy a script to .git/hooks/pre-commit and make
+sure it's executable.
 
 You might also find it useful to create a git alias for gofmt by running:
 git config --global alias.gofmt '!gofmt -w `git diff --name-only --cached --diff-filter=AM | grep "\.go$"`'
