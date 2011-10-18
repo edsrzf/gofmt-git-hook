@@ -3,6 +3,7 @@
 # git add -p or git commit -p.
 
 test_fmt() {
+    hash gofmt 2>&- || { echo >&2 "gofmt not in PATH."; exit 1; }
     IFS='
 '
     for file in $(git diff --cached --name-only | grep '\.go$')
