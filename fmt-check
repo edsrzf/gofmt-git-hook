@@ -4,7 +4,7 @@ test_fmt() {
     hash gofmt 2>&- || { echo >&2 "gofmt not in PATH."; exit 1; }
     IFS='
 '
-    for file in $(git diff --cached --name-only | grep '\.go$')
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.go$')
     do
         if test "$(git cat-file -p :$file | gofmt -l)" = "<standard input>"
         then
