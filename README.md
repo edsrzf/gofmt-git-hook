@@ -15,6 +15,7 @@ To install in a single repository, copy a script to .git/hooks/pre-commit and ma
 sure it's executable.
 
 You might also find it useful to create a git alias for gofmt by running:
+
     git config --global alias.gofmt '!gofmt -w `git diff --name-only --cached --diff-filter=AM | grep "\.go$"`'
 
 Then you can run git gofmt and format all modified .go files. Note that this alias
