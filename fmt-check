@@ -4,12 +4,12 @@ test_fmt() {
     hash gofmt 2>&- || { echo >&2 "gofmt not in PATH."; exit 1; }
     IFS='
 '
-    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.go$')
+    for file in `git diff --cached --name-only --diff-filter=ACM | grep '\.go$'`
     do
-        output=$(git cat-file -p :$file | gofmt -l 2>&1)
+        output=`git cat-file -p :$file | gofmt -l 2>&1`
         if test $? -ne 0
         then
-            output=$(echo "$output" | sed "s,<standard input>,$file,")
+            output=`echo "$output" | sed "s,<standard input>,$file,"`
             syntaxerrors="${list}${output}\n"
         elif test -n "$output"
         then
