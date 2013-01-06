@@ -7,9 +7,9 @@ test_fmt() {
     IFS='
 '
     exitcode=0
-    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.go$')
+    for file in `git diff --cached --name-only --diff-filter=ACM | grep '\.go$'`
     do
-        output=gofmt -w "$file"
+        output=`gofmt -w "$file"`
         if test -n "$output"
         then
             # any output is a syntax error
