@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # NOTE: This script does not play well when adding partial changes, such as with
 # git add -p or git commit -p.
 
@@ -9,7 +9,7 @@ test_fmt() {
     exitcode=0
     for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.go$')
     do
-        output=gofmt -w "$file"
+        output=$(gofmt -w "$file")
         if test -n "$output"
         then
             # any output is a syntax error
