@@ -25,7 +25,7 @@ test_fmt() {
     fi
     if test -n "$list"
     then
-        echo >&2 "gofmt needs to format these files (run gofmt -w):"
+        echo >&2 "gofmt needs to format these files (run gofmt -w and git add):"
         printf "$list"
         exitcode=1
     fi
