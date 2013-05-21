@@ -16,7 +16,7 @@ sure it's executable.
 
 You might also find it useful to create a git alias for gofmt by running:
 
-    git config --global alias.gofmt '!gofmt -w `git diff --name-only --cached --diff-filter=AM | grep "\.go$"`'
+    git config --global alias.gofmt '!echo $(git diff --cached --name-only --diff-filter=ACM | grep '.go$') | xargs gofmt -w -l | xargs git add'
 
 Then you can run git gofmt and format all modified .go files. Note that this alias
 will not handle situations where partial file changes have been added to the index.
